@@ -1,7 +1,4 @@
-# 2015cda_g8
-2015cda_g8
+My Awesome Book
+=======
 
-這裡是虎尾科技大學機械設計系二年甲班，協同產品設計實習，第八組專用的gitbook
-
-編輯測試by50
-
+This file file serves as your book's preface, a great place to describe your book's content and ideas.
