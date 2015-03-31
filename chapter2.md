@@ -1,3 +1,5 @@
-# Second Chapter
+# 研發日誌
 
-This is for text page.
+40223124
+3/31
+今天各種協助組員
