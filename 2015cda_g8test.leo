@@ -1,3 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created by Leo (http://leoeditor.com/leo_toc.html) -->
+<?xml-stylesheet ekr_test?>
+<leo_file xmlns:leo="http://www.leo-editor.org/2011/leo" >
+<leo_header file_format="2" tnodes="0" max_tnode_index="0" clone_windows="0"/>
+<globals body_outline_ratio="0.5" body_secondary_ratio="0.5">
+	<global_window_position top="50" left="50" height="500" width="700"/>
+	<global_log_window_position top="0" left="0" height="0" width="0"/>
+</globals>
+<preferences/>
+<find_panel_settings/>
+<vnodes>
+<v t="kmolII_lite.20150323163047.1529"><vh>NewHeadline</vh></v>
+<v t="kmolII_lite.20150323163047.1530" a="E"><vh>@path ./</vh>
+<v t="2015.20150407103918.1761"><vh>@flie wsgi.py</vh></v>
+<v t="kmolII_lite.20150323163047.1531"><vh>@edit SUMMARY.md</vh></v>
+<v t="2015.20150407103918.1795"><vh></vh></v>
+<v t="kmolII_lite.20150323163047.1535"><vh>@edit chapter1.md</vh></v>
+<v t="kmolII_lite.20150323163047.1536"><vh>@edit chapter2.md</vh></v>
+<v t="kmolII_lite.20150323163047.1534"><vh>@edit README.md</vh></v>
+</v>
+</vnodes>
+<tnodes>
+<t tx="2015.20150407103918.1761">@language python
 #@+leo-ver=5-thin
 #@+node:2014fall.20141212095015.1775: * @file wsgi.py
 # coding=utf-8
@@ -10,8 +34,8 @@
 #@@language python
 #@@tabwidth -4
 
-#@+<<declarations>>
-#@+node:2014fall.20141212095015.1776: ** <<declarations>> (wsgi)
+#@+&lt;&lt;declarations&gt;&gt;
+#@+node:2014fall.20141212095015.1776: ** &lt;&lt;declarations&gt;&gt; (wsgi)
 import cherrypy
 # 導入 Python 內建的 os 模組, 因為 os 模組為 Python 內建, 所以無需透過 setup.py 安裝
 import os
@@ -41,7 +65,7 @@ repeat_no = int(input("重複列印幾次?"))
 for i in range(repeat_no):
     print(toprint)
 '''
-#@-<<declarations>>
+#@-&lt;&lt;declarations&gt;&gt;
 #@+others
 #@+node:2014fall.20141212095015.1777: ** class Hello
 ################# (3) 程式類別定義區
@@ -93,25 +117,25 @@ class Hello(object):
         cherrypy.session['count'] = thecount
         # 印出讓使用者輸入的超文件表單
         outstring = '''
-    <!DOCTYPE html> 
-    <html>
-    <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <!-- 載入 brython.js -->
-    <script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"></script>
-    <script src="/static/Cango2D.js" type="text/javascript"></script>
-    <script src="/static/gearUtils-04.js" type="text/javascript"></script>
-    </head>
-    <!-- 啟動 brython() -->
-    <body onload="brython()">
+    &lt;!DOCTYPE html&gt; 
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+    &lt;!-- 載入 brython.js --&gt;
+    &lt;script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"&gt;&lt;/script&gt;
+    &lt;script src="/static/Cango2D.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;script src="/static/gearUtils-04.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;!-- 啟動 brython() --&gt;
+    &lt;body onload="brython()"&gt;
         
-    <form method=POST action=doCheck>
-    請輸入您所猜的整數:<input type=text name=guess><br />
-    <input type=submit value=send>
-    </form>
-    <hr>
-    <!-- 以下在網頁內嵌 Brython 程式 -->
-    <script type="text/python">
+    &lt;form method=POST action=doCheck&gt;
+    請輸入您所猜的整數:&lt;input type=text name=guess&gt;&lt;br /&gt;
+    &lt;input type=submit value=send&gt;
+    &lt;/form&gt;
+    &lt;hr&gt;
+    &lt;!-- 以下在網頁內嵌 Brython 程式 --&gt;
+    &lt;script type="text/python"&gt;
     from browser import document, alert
 
     def echo(ev):
@@ -119,11 +143,11 @@ class Hello(object):
 
     # 將文件中名稱為 mybutton 的物件, 透過 click 事件與 echo 函式 bind 在一起
     document['mybutton'].bind('click',echo)
-    </script>
-    <input id="zone"><button id="mybutton">click !</button>
-    <hr>
-    <!-- 以下為 canvas 畫圖程式 -->
-    <script type="text/python">
+    &lt;/script&gt;
+    &lt;input id="zone"&gt;&lt;button id="mybutton"&gt;click !&lt;/button&gt;
+    &lt;hr&gt;
+    &lt;!-- 以下為 canvas 畫圖程式 --&gt;
+    &lt;script type="text/python"&gt;
     # 從 browser 導入 document
     from browser import document
     import math
@@ -163,10 +187,10 @@ class Hello(object):
     ctx.strokeStyle = "black"
     ctx.arc(250,250,50,0,2*math.pi)
     ctx.stroke()
-    </script>
-    <canvas id="plotarea" width="800" height="600"></canvas>
-    </body>
-    </html>
+    &lt;/script&gt;
+    &lt;canvas id="plotarea" width="800" height="600"&gt;&lt;/canvas&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
     '''
 
         return outstring
@@ -175,26 +199,26 @@ class Hello(object):
     # N 為齒數, M 為模數, P 為壓力角
     def twoDgear(self, N=20, M=5, P=15):
         outstring = '''
-    <!DOCTYPE html> 
-    <html>
-    <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <!-- 載入 brython.js -->
-    <script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"></script>
-    <script src="/static/Cango2D.js" type="text/javascript"></script>
-    <script src="/static/gearUtils-04.js" type="text/javascript"></script>
-    </head>
-    <!-- 啟動 brython() -->
-    <body onload="brython()">
+    &lt;!DOCTYPE html&gt; 
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+    &lt;!-- 載入 brython.js --&gt;
+    &lt;script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"&gt;&lt;/script&gt;
+    &lt;script src="/static/Cango2D.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;script src="/static/gearUtils-04.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;!-- 啟動 brython() --&gt;
+    &lt;body onload="brython()"&gt;
         
-    <form method=POST action=do2Dgear>
-    齒數:<input type=text name=N><br />
-    模數:<input type=text name=M><br />
-    壓力角:<input type=text name=P><br />
-    <input type=submit value=send>
-    </form>
-    </body>
-    </html>
+    &lt;form method=POST action=do2Dgear&gt;
+    齒數:&lt;input type=text name=N&gt;&lt;br /&gt;
+    模數:&lt;input type=text name=M&gt;&lt;br /&gt;
+    壓力角:&lt;input type=text name=P&gt;&lt;br /&gt;
+    &lt;input type=submit value=send&gt;
+    &lt;/form&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
     '''
 
         return outstring
@@ -203,26 +227,26 @@ class Hello(object):
     # N 為齒數, M 為模數, P 為壓力角
     def threeDgear(self, N=20, M=5, P=15):
         outstring = '''
-    <!DOCTYPE html> 
-    <html>
-    <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <!-- 載入 brython.js -->
-    <script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"></script>
-    <script src="/static/Cango2D.js" type="text/javascript"></script>
-    <script src="/static/gearUtils-04.js" type="text/javascript"></script>
-    </head>
-    <!-- 啟動 brython() -->
-    <body onload="brython()">
+    &lt;!DOCTYPE html&gt; 
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+    &lt;!-- 載入 brython.js --&gt;
+    &lt;script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"&gt;&lt;/script&gt;
+    &lt;script src="/static/Cango2D.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;script src="/static/gearUtils-04.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;!-- 啟動 brython() --&gt;
+    &lt;body onload="brython()"&gt;
         
-    <form method=POST action=do3Dgear>
-    齒數:<input type=text name=N><br />
-    模數:<input type=text name=M><br />
-    壓力角:<input type=text name=P><br />
-    <input type=submit value=send>
-    </form>
-    </body>
-    </html>
+    &lt;form method=POST action=do3Dgear&gt;
+    齒數:&lt;input type=text name=N&gt;&lt;br /&gt;
+    模數:&lt;input type=text name=M&gt;&lt;br /&gt;
+    壓力角:&lt;input type=text name=P&gt;&lt;br /&gt;
+    &lt;input type=submit value=send&gt;
+    &lt;/form&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
     '''
 
         return outstring
@@ -231,19 +255,19 @@ class Hello(object):
     # N 為齒數, M 為模數, P 為壓力角
     def do2Dgear(self, N=20, M=5, P=15):
         outstring = '''
-    <!DOCTYPE html> 
-    <html>
-    <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <!-- 載入 brython.js -->
-    <script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"></script>
-    <script src="/static/Cango2D.js" type="text/javascript"></script>
-    <script src="/static/gearUtils-04.js" type="text/javascript"></script>
-    </head>
-    <!-- 啟動 brython() -->
-    <body onload="brython()">
-    <!-- 以下為 canvas 畫圖程式 -->
-    <script type="text/python">
+    &lt;!DOCTYPE html&gt; 
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+    &lt;!-- 載入 brython.js --&gt;
+    &lt;script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"&gt;&lt;/script&gt;
+    &lt;script src="/static/Cango2D.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;script src="/static/gearUtils-04.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;!-- 啟動 brython() --&gt;
+    &lt;body onload="brython()"&gt;
+    &lt;!-- 以下為 canvas 畫圖程式 --&gt;
+    &lt;script type="text/python"&gt;
     # 從 browser 導入 document
     from browser import document
     import math
@@ -285,10 +309,10 @@ class Hello(object):
     ctx.strokeStyle = "black"
     ctx.arc(250,250,50,0,2*math.pi)
     ctx.stroke()
-    </script>
-    <canvas id="plotarea" width="800" height="600"></canvas>
-    </body>
-    </html>
+    &lt;/script&gt;
+    &lt;canvas id="plotarea" width="800" height="600"&gt;&lt;/canvas&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
     '''
 
         return outstring
@@ -297,19 +321,19 @@ class Hello(object):
     # N 為齒數, M 為模數, P 為壓力角
     def do3Dgear(self, N=20, M=5, P=15):
         outstring = '''
-    <!DOCTYPE html> 
-    <html>
-    <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <!-- 載入 brython.js -->
-    <script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"></script>
-    <script src="/static/Cango2D.js" type="text/javascript"></script>
-    <script src="/static/gearUtils-04.js" type="text/javascript"></script>
-    </head>
-    <!-- 啟動 brython() -->
-    <body onload="brython()">
-    <!-- 以下為 canvas 畫圖程式 -->
-    <script type="text/python">
+    &lt;!DOCTYPE html&gt; 
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+    &lt;!-- 載入 brython.js --&gt;
+    &lt;script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"&gt;&lt;/script&gt;
+    &lt;script src="/static/Cango2D.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;script src="/static/gearUtils-04.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;!-- 啟動 brython() --&gt;
+    &lt;body onload="brython()"&gt;
+    &lt;!-- 以下為 canvas 畫圖程式 --&gt;
+    &lt;script type="text/python"&gt;
     # 從 browser 導入 document
     from browser import document
     import math
@@ -351,10 +375,10 @@ class Hello(object):
     ctx.strokeStyle = "black"
     ctx.arc(250,250,50,0,2*math.pi)
     ctx.stroke()
-    </script>
-    <canvas id="plotarea" width="800" height="600"></canvas>
-    </body>
-    </html>
+    &lt;/script&gt;
+    &lt;canvas id="plotarea" width="800" height="600"&gt;&lt;/canvas&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
     '''
 
         return outstring
@@ -363,20 +387,20 @@ class Hello(object):
     # N 為齒數, M 為模數, P 為壓力角
     def mygeartest(self, N=20, M=5, P=15):
         outstring = '''
-    <!DOCTYPE html> 
-    <html>
-    <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <!-- 載入 brython.js -->
-    <script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"></script>
-    <script src="/static/Cango2D.js" type="text/javascript"></script>
-    <script src="/static/gearUtils-04.js" type="text/javascript"></script>
-    </head>
-    <!-- 啟動 brython() -->
-    <body onload="brython()">
+    &lt;!DOCTYPE html&gt; 
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+    &lt;!-- 載入 brython.js --&gt;
+    &lt;script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"&gt;&lt;/script&gt;
+    &lt;script src="/static/Cango2D.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;script src="/static/gearUtils-04.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;!-- 啟動 brython() --&gt;
+    &lt;body onload="brython()"&gt;
 
-    <!-- 以下為 canvas 畫圖程式 -->
-    <script type="text/python">
+    &lt;!-- 以下為 canvas 畫圖程式 --&gt;
+    &lt;script type="text/python"&gt;
     # 從 browser 導入 document
     from browser import document
     from math import *
@@ -403,14 +427,11 @@ class Hello(object):
     # midx 為齒輪圓心 x 座標
     # midy 為齒輪圓心 y 座標
     # rp 為節圓半徑, n 為齒數
-
     def 齒輪(midx, midy, rp, n, 顏色):
         # 將角度轉換因子設為全域變數
         global deg
         # 齒輪漸開線分成 15 線段繪製
         imax = 15
-        #節圓半徑與模數轉換
-        rp='''+str(M)+'''*'''+str(N)+'''/2
         # 在輸入的畫布上繪製直線, 由圓心到節圓 y 軸頂點畫一直線
         create_line(midx, midy, midx, midy-rp)
         # 畫出 rp 圓, 畫圓函式尚未定義
@@ -448,7 +469,7 @@ class Hello(object):
             ang2=2.*j*pi/n+sigma
             lxd=midx+rd*sin(ang2-2.*pi/n)
             lyd=midy-rd*cos(ang2-2.*pi/n)
-            #for(i=0;i<=imax;i++):
+            #for(i=0;i&lt;=imax;i++):
             for i in range(imax+1):
                 r=rb+i*dr
                 theta=sqrt((r*r)/(rb*rb)-1.)
@@ -474,7 +495,7 @@ class Hello(object):
             # lxd 為齒根圓上的左側 x 座標, lyd 則為 y 座標
             # 下列為齒根圓上用來近似圓弧的直線
             create_line((lxd),(lyd),(midx+xd),(midy-yd),fill=顏色)
-            #for(i=0;i<=imax;i++):
+            #for(i=0;i&lt;=imax;i++):
             for i in range(imax+1):
                 r=rb+i*dr
                 theta=sqrt((r*r)/(rb*rb)-1.)
@@ -499,12 +520,12 @@ class Hello(object):
             # 下列為齒頂圓上用來近似圓弧的直線
             create_line(lfx,lfy,rfx,rfy,fill=顏色)
 
-    齒輪(400,400,300,'''+str(N)+''',"blue")
+    齒輪(400,400,300,41,"blue")
 
-    </script>
-    <canvas id="plotarea" width="800" height="800"></canvas>
-    </body>
-    </html>
+    &lt;/script&gt;
+    &lt;canvas id="plotarea" width="800" height="800"&gt;&lt;/canvas&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
     '''
 
         return outstring
@@ -513,20 +534,20 @@ class Hello(object):
     # N 為齒數, M 為模數, P 為壓力角
     def my3Dgeartest(self, N=20, M=5, P=15):
         outstring = '''
-    <!DOCTYPE html> 
-    <html>
-    <head>
-    <meta http-equiv="content-type" content="text/html;charset=utf-8">
-    <!-- 載入 brython.js -->
-    <script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"></script>
-    <script src="/static/Cango2D.js" type="text/javascript"></script>
-    <script src="/static/gearUtils-04.js" type="text/javascript"></script>
-    </head>
-    <!-- 啟動 brython() -->
-    <body onload="brython()">
+    &lt;!DOCTYPE html&gt; 
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;meta http-equiv="content-type" content="text/html;charset=utf-8"&gt;
+    &lt;!-- 載入 brython.js --&gt;
+    &lt;script type="text/javascript" src="/static/Brython3.1.1-20150328-091302/brython.js"&gt;&lt;/script&gt;
+    &lt;script src="/static/Cango2D.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;script src="/static/gearUtils-04.js" type="text/javascript"&gt;&lt;/script&gt;
+    &lt;/head&gt;
+    &lt;!-- 啟動 brython() --&gt;
+    &lt;body onload="brython()"&gt;
 
-    <!-- 以下為 canvas 畫圖程式 -->
-    <script type="text/python">
+    &lt;!-- 以下為 canvas 畫圖程式 --&gt;
+    &lt;script type="text/python"&gt;
     # 從 browser 導入 document
     from browser import document
     from math import *
@@ -595,7 +616,7 @@ class Hello(object):
             ang2=2.*j*pi/n+sigma
             lxd=midx+rd*sin(ang2-2.*pi/n)
             lyd=midy-rd*cos(ang2-2.*pi/n)
-            #for(i=0;i<=imax;i++):
+            #for(i=0;i&lt;=imax;i++):
             for i in range(imax+1):
                 r=rb+i*dr
                 theta=sqrt((r*r)/(rb*rb)-1.)
@@ -621,7 +642,7 @@ class Hello(object):
             # lxd 為齒根圓上的左側 x 座標, lyd 則為 y 座標
             # 下列為齒根圓上用來近似圓弧的直線
             create_line((lxd),(lyd),(midx+xd),(midy-yd),fill=顏色)
-            #for(i=0;i<=imax;i++):
+            #for(i=0;i&lt;=imax;i++):
             for i in range(imax+1):
                 r=rb+i*dr
                 theta=sqrt((r*r)/(rb*rb)-1.)
@@ -647,10 +668,10 @@ class Hello(object):
             create_line(lfx,lfy,rfx,rfy,fill=顏色)
 
     gear(400,400,300,41,"blue")
-    </script>
-    <canvas id="plotarea" width="800" height="800"></canvas>
-    </body>
-    </html>
+    &lt;/script&gt;
+    &lt;canvas id="plotarea" width="800" height="800"&gt;&lt;/canvas&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;
     '''
 
         return outstring
@@ -673,21 +694,21 @@ class Hello(object):
         # 每執行 doCheck 一次,次數增量一次
         cherrypy.session['count']  += 1
         # 答案與所猜數字進行比對
-        if theanswer < theguess:
+        if theanswer &lt; theguess:
             return "big " + self.guessform()
-        elif theanswer > theguess:
+        elif theanswer &gt; theguess:
             return "small " + self.guessform()
         else:
             # 已經猜對, 從 session 取出累計猜測次數
             thecount = cherrypy.session.get('count')
-            return "exact: <a href=''>再猜</a>"
+            return "exact: &lt;a href=''&gt;再猜&lt;/a&gt;"
     #@+node:2014fall.20141215194146.1789: *3* guessform
     def guessform(self):
         # 印出讓使用者輸入的超文件表單
-        outstring = str(cherrypy.session.get('answer')) + "/" + str(cherrypy.session.get('count')) + '''<form method=POST action=doCheck>
-    請輸入您所猜的整數:<input type=text name=guess><br />
-    <input type=submit value=send>
-    </form>'''
+        outstring = str(cherrypy.session.get('answer')) + "/" + str(cherrypy.session.get('count')) + '''&lt;form method=POST action=doCheck&gt;
+    請輸入您所猜的整數:&lt;input type=text name=guess&gt;&lt;br /&gt;
+    &lt;input type=submit value=send&gt;
+    &lt;/form&gt;'''
         return outstring
     #@-others
 #@-others
@@ -715,3 +736,9 @@ else:
     # 表示在近端執行
     cherrypy.quickstart(root, config=application_conf)
 #@-leo
+</t>
+<t tx="2015.20150407103918.1795"></t>
+<t tx="kmolII_lite.20150323163047.1529"></t>
+<t tx="kmolII_lite.20150323163047.1530"></t>
+</tnodes>
+</leo_file>
