@@ -17,6 +17,8 @@
 
 40223151簡正斌
 
+40223145劉兆銓
+
 waffle連結:https://waffle.io/mm112287/2015cda_g8
 
 github連結:https://github.com/mm112287/2015cda_g8
