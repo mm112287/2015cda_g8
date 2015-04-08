@@ -17,6 +17,8 @@ import cherrypy
 import os
 # 導入 random 模組
 import random
+# 導入 gear 模組
+import gear
 
 ################# (2) 廣域變數設定區
 # 確定程式檔案所在目錄, 在 Windows 下有最後的反斜線
@@ -542,12 +544,14 @@ application_conf = {'/static':{
         'tools.staticdir.on': True,
         'tools.staticdir.dir': data_dir+"/images"}
     }
-cherrypy.server.socket_port = 8082
+root = Hello()
+root.gear = gear.Gear()
+cherrypy.server.socket_port = 8081
 cherrypy.server.socket_host = '127.0.0.1'
 if 'OPENSHIFT_REPO_DIR' in os.environ.keys():
     # 表示在 OpenSfhit 執行
-    application = cherrypy.Application(Hello(), config=application_conf)
+    application = cherrypy.Application(root, config=application_conf)
 else:
     # 表示在近端執行
-    cherrypy.quickstart(Hello(), config=application_conf)
+    cherrypy.quickstart(root, config=application_conf)
 #@-leo
