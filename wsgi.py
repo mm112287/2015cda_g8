@@ -118,7 +118,11 @@ class Hello(object):
         <input type=\"text\" name=\"inp2\"><br />
         <input type=\"submit\" value=\"確定\">
         <input type=\"reset\" value=\"重填\">
+        <a href="gear">3D齒輪模式</a>
     </form>
+    3D齒輪模式操作圖示<img src="https://copy.com/LEfCvgTRr6ptU2Jv"><br />
+    <img src="https://copy.com/ZpzLF8IqeJRN0D3O"><br />
+    <img src="https://copy.com/thumbs/cda/3Dgear3.png?size=1024&revision=80"><br />
     <hr>
     <!-- 以下在網頁內嵌 Brython 程式 -->
     <script type="text/python">

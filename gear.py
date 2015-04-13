@@ -106,19 +106,21 @@ class Gear(object):
             return "抱歉! 資料庫無法連線<br />"
 
         outstring = '''
-<form id=entry method=post action="gear_width">
-請填妥下列參數，以完成適當的齒尺寸大小設計。<br />
+<form method=\"post\" action=\"gear_width">
+    請先下載齒輪的檔案，放在V槽跟目錄下，存成黨名gear.prt，在開creo打本網址即可使用<br />
+    模數:<input type=\"text\" name=\"m\"><br />
+    齒數:<input type=\"text\" name=\"n\"><br />
+    PS:壓力角內定20度，不可更改<br />
+請填妥下列參數，以完成適當的齒面寬尺寸大小設計。<br />
 馬達馬力:<input type=text name=horsepower id=horsepower value=100 size=10>horse power<br />
 馬達轉速:<input type=text name=rpm id=rpm value=1120 size=10>rpm<br />
 齒輪減速比: <input type=text name=ratio id=ratio value=4 size=10><br />
 齒形:<select name=toothtype id=toothtype>
 <option value=type1>壓力角20度,a=0.8,b=1.0
 <option value=type2>壓力角20度,a=1.0,b=1.25
-<option value=type3>壓力角25度,a=1.0,b=1.25
-<option value=type4>壓力角25度,a=1.0,b=1.35
 </select><br />
 安全係數:<input type=text name=safetyfactor id=safetyfactor value=3 size=10><br />
-齒輪材質:<select name=material_serialno id=material_serialno>
+齒輪材質:<select name=material_serialno id=material_serialno><br />
 '''
         for material_item in material:
             outstring += "<option value=" + str(material_item.serialno) + ">UNS - " + \
@@ -164,7 +166,7 @@ class Gear(object):
     #@+node:office.20150407074720.8: *3* gear_width
     # 改寫為齒面寬的設計函式
     @cherrypy.expose
-    def gear_width(self, horsepower=100, rpm=1000, ratio=4, toothtype=1, safetyfactor=2, material_serialno=1, npinion=18):
+    def gear_width(self, horsepower=100, rpm=1000, ratio=4, toothtype=1, safetyfactor=2, material_serialno=1, npinion=18,facewidth=None,n=None,m=None):
         SQLite連結 = Store(SQLiteWriter(_curdir+"/lewis.db", frozen=True))
         outstring = ""
         # 根據所選用的齒形決定壓力角
@@ -256,10 +258,83 @@ class Gear(object):
             counter += 1
         facewidth = round(facewidth, 4)
         if(counter<5000):
-            # 先載入 cube 程式測試
-            #outstring = self.cube_weblink()
+
             # 再載入 gear 程式測試
-            outstring = self.gear_weblink()
+            outstring = '''<script type="text/javascript" src="/static/weblink/pfcUtils.js"></script>
+    <script type="text/javascript" src="/static/weblink/wl_header.js">// <![CDATA[
+    document.writeln ("Error loading Pro/Web.Link header!");
+    // ]]></script>
+    <script type="text/javascript" language="JavaScript">// <![CDATA[
+    if (!pfcIsWindows()) netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+    // 若第三輸入為 false, 表示僅載入 session, 但是不顯示
+    // ret 為 model open return
+     var ret = document.pwl.pwlMdlOpen("gear.prt", "v:/", false);
+    if (!ret.Status) {
+        alert("pwlMdlOpen failed (" + ret.ErrorCode + ")");
+    }
+        //將 ProE 執行階段設為變數 session
+        var session = pfcGetProESession();
+        // 在視窗中打開零件檔案, 並且顯示出來
+        var window = session.OpenFile(pfcCreate("pfcModelDescriptor").CreateFromFileName("gear.prt"));
+        var solid = session.GetModel("gear.prt",pfcCreate("pfcModelType").MDL_PART);
+        var n,width,m,myf,myn,mym,i,j,volume,count,d1Value,d2Value,d3Value;
+        // 將模型檔中的 length 變數設為 javascript 中的 length 變數
+        n = solid.GetParam("n");
+        // 將模型檔中的 width 變數設為 javascript 中的 width 變數
+        width = solid.GetParam("face_width");
+        m = solid.GetParam("module");
+    //改變零件尺寸
+        //myf=20;
+        //myn=20;
+        volume=0;
+        count=0;
+        try
+        {
+                // 以下採用 URL 輸入對應變數
+                //createParametersFromArguments ();
+                // 以下則直接利用 javascript 程式改變零件參數
+                for(i=0;i<=1;i++)
+                {
+                    //for(j=0;j<=1;j++)
+                    //{
+                        myf='''+str(n)+''';
+                        myn='''+str(facewidth)+'''
+                        mym='''+str(m)+'''
+    // 設定變數值, 利用 ModelItem 中的 CreateDoubleParamValue 轉換成 Pro/Web.Link 所需要的浮點數值
+             //d1Value = pfcCreate ("MpfcModelItem").CreateDoubleParamValue(myf);
+             d1Value = pfcCreate ("MpfcModelItem").CreateIntParamValue(myf);
+             d2Value = pfcCreate ("MpfcModelItem").CreateDoubleParamValue(myn);
+             d3Value = pfcCreate ("MpfcModelItem").CreateDoubleParamValue(mym);
+
+    // 將處理好的變數值, 指定給對應的零件變數
+                        n.Value = d1Value;
+                        width.Value = d2Value;
+                        m.Value = d3Value;
+                        //零件尺寸重新設定後, 呼叫 Regenerate 更新模型
+                        solid.Regenerate(void null);
+                        //利用 GetMassProperty 取得模型的質量相關物件
+                        properties = solid.GetMassProperty(void null);
+                        //volume = volume + properties.Volume;
+    volume = properties.Volume;
+                        count = count + 1;
+    alert("你已經完成"+count+"顆"+myf+"齒,模數"+mym+"的大好齒輪");
+    // 將零件存為新檔案
+    var newfile = document.pwl.pwlMdlSaveAs("gear.prt", "v:/", "mygear_"+count+".prt");
+    if (!newfile.Status) {
+        alert("pwlMdlSaveAs failed (" + newfile.ErrorCode + ")");
+    }
+    //} // 內圈 for 迴圈
+                } //外圈 for 迴圈
+                //alert("共執行:"+count+"次,零件總體積:"+volume);
+                //alert("零件體積:"+properties.Volume);
+                //alert("零件體積取整數:"+Math.round(properties.Volume));
+            }
+        catch(err)
+            {
+                alert ("Exception occurred: "+pfcGetExceptionType (err));
+            }
+    // ]]></script>
+    '''
 
             outstring += "進行"+str(counter)+"次重複運算後,得到合用的facewidth值為:"+str(facewidth)
         return outstring
@@ -281,8 +356,11 @@ class Gear(object):
         var session = pfcGetProESession();
         // 在視窗中打開零件檔案, 並且顯示出來
         var window = session.OpenFile(pfcCreate("pfcModelDescriptor").CreateFromFileName("cube.prt"));
+        
         var solid = session.GetModel("cube.prt",pfcCreate("pfcModelType").MDL_PART);
+        
         var length,width,myf,myn,i,j,volume,count,d1Value,d2Value;
+        
         // 將模型檔中的 length 變數設為 javascript 中的 length 變數
         length = solid.GetParam("a1");
         // 將模型檔中的 width 變數設為 javascript 中的 width 變數
@@ -297,7 +375,7 @@ class Gear(object):
                 // 以下採用 URL 輸入對應變數
                 //createParametersFromArguments ();
                 // 以下則直接利用 javascript 程式改變零件參數
-                for(i=0;i<=5;i++)
+                for(i=0;i<=1;i++)
                 {
                     //for(j=0;j<=2;j++)
                     //{
@@ -333,81 +411,6 @@ class Gear(object):
                 alert ("Exception occurred: "+pfcGetExceptionType (err));
             }
     </script>
-    '''
-        return outstring
-    #@+node:office.20150407074720.10: *3* gear_weblink
-    @cherrypy.expose
-    def gear_weblink(self, facewidth=5, n=18):
-        outstring = '''<script type="text/javascript" src="/static/weblink/pfcUtils.js"></script>
-    <script type="text/javascript" src="/static/weblink/wl_header.js">// <![CDATA[
-    document.writeln ("Error loading Pro/Web.Link header!");
-    // ]]></script>
-    <script type="text/javascript" language="JavaScript">// <![CDATA[
-    if (!pfcIsWindows()) netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
-    // 若第三輸入為 false, 表示僅載入 session, 但是不顯示
-    // ret 為 model open return
-     var ret = document.pwl.pwlMdlOpen("gear.prt", "v:/", false);
-    if (!ret.Status) {
-        alert("pwlMdlOpen failed (" + ret.ErrorCode + ")");
-    }
-        //將 ProE 執行階段設為變數 session
-        var session = pfcGetProESession();
-        // 在視窗中打開零件檔案, 並且顯示出來
-        var window = session.OpenFile(pfcCreate("pfcModelDescriptor").CreateFromFileName("gear.prt"));
-        var solid = session.GetModel("gear.prt",pfcCreate("pfcModelType").MDL_PART);
-        var length,width,myf,myn,i,j,volume,count,d1Value,d2Value;
-        // 將模型檔中的 length 變數設為 javascript 中的 length 變數
-        length = solid.GetParam("n");
-        // 將模型檔中的 width 變數設為 javascript 中的 width 變數
-        width = solid.GetParam("face_width");
-    //改變零件尺寸
-        //myf=20;
-        //myn=20;
-        volume=0;
-        count=0;
-        try
-        {
-                // 以下採用 URL 輸入對應變數
-                //createParametersFromArguments ();
-                // 以下則直接利用 javascript 程式改變零件參數
-                for(i=0;i<=5;i++)
-                {
-                    //for(j=0;j<=2;j++)
-                    //{
-                        myf=25+i*2;
-                        myn=10.0+i*0.5;
-    // 設定變數值, 利用 ModelItem 中的 CreateDoubleParamValue 轉換成 Pro/Web.Link 所需要的浮點數值
-             //d1Value = pfcCreate ("MpfcModelItem").CreateDoubleParamValue(myf);
-             d1Value = pfcCreate ("MpfcModelItem").CreateIntParamValue(myf);
-             d2Value = pfcCreate ("MpfcModelItem").CreateDoubleParamValue(myn);
-
-    // 將處理好的變數值, 指定給對應的零件變數
-                        length.Value = d1Value;
-                        width.Value = d2Value;
-                        //零件尺寸重新設定後, 呼叫 Regenerate 更新模型
-                        solid.Regenerate(void null);
-                        //利用 GetMassProperty 取得模型的質量相關物件
-                        properties = solid.GetMassProperty(void null);
-                        //volume = volume + properties.Volume;
-    volume = properties.Volume;
-                        count = count + 1;
-    alert("執行第"+count+"次,零件總體積:"+volume);
-    // 將零件存為新檔案
-    var newfile = document.pwl.pwlMdlSaveAs("gear.prt", "v:/", "mygear_"+count+".prt");
-    if (!newfile.Status) {
-        alert("pwlMdlSaveAs failed (" + newfile.ErrorCode + ")");
-    }
-    //} // 內圈 for 迴圈
-                } //外圈 for 迴圈
-                //alert("共執行:"+count+"次,零件總體積:"+volume);
-                //alert("零件體積:"+properties.Volume);
-                //alert("零件體積取整數:"+Math.round(properties.Volume));
-            }
-        catch(err)
-            {
-                alert ("Exception occurred: "+pfcGetExceptionType (err));
-            }
-    // ]]></script>
     '''
         return outstring
     #@-others
