@@ -106,15 +106,16 @@ class Gear(object):
             return "抱歉! 資料庫無法連線<br />"
 
         outstring = '''
+        
 <form method=\"post\" action=\"gear_width">
     請先下載齒輪的檔案，放在V槽跟目錄下，存成黨名gear.prt，在開creo打本網址即可使用<br />
-    模數:<input type=\"text\" name=\"m\"><br />
-    齒數:<input type=\"text\" name=\"n\"><br />
+    <a href="https://drive.google.com/open?id=0B1DlKZ6juyQeQ0ZMTnBLejJQVkE&authuser=0">creo2載點</a>
+
     PS:壓力角內定20度，不可更改<br />
 請填妥下列參數，以完成適當的齒面寬尺寸大小設計。<br />
 馬達馬力:<input type=text name=horsepower id=horsepower value=100 size=10>horse power<br />
 馬達轉速:<input type=text name=rpm id=rpm value=1120 size=10>rpm<br />
-齒輪減速比: <input type=text name=ratio id=ratio value=4 size=10><br />
+齒輪減速比: <input type=text name=ratio id=ratio value=2 size=10><br />
 齒形:<select name=toothtype id=toothtype>
 <option value=type1>壓力角20度,a=0.8,b=1.0
 <option value=type2>壓力角20度,a=1.0,b=1.25
@@ -127,7 +128,7 @@ class Gear(object):
                 material_item.unsno + " - " + material_item.treatment
         outstring += "</select><br />"
         
-        outstring += "小齒輪齒數:<input type=text name=npinion id=npinion value=18 size=10><br />"
+        outstring += "小齒輪齒數:<input type=text name=npinion id=npinion value=12 size=10><br />模數:<input type=\"text\" name=\"m\"><br />"
         outstring += "<input type=submit id=submit value=進行運算>"
         outstring += "</form>"
 
@@ -166,7 +167,7 @@ class Gear(object):
     #@+node:office.20150407074720.8: *3* gear_width
     # 改寫為齒面寬的設計函式
     @cherrypy.expose
-    def gear_width(self, horsepower=100, rpm=1000, ratio=4, toothtype=1, safetyfactor=2, material_serialno=1, npinion=18,facewidth=None,n=None,m=None):
+    def gear_width(self, horsepower=100, rpm=1000, ratio=None, toothtype=1, safetyfactor=2, material_serialno=1, npinion=None,facewidth=None,m=None):
         SQLite連結 = Store(SQLiteWriter(_curdir+"/lewis.db", frozen=True))
         outstring = ""
         # 根據所選用的齒形決定壓力角
@@ -279,7 +280,7 @@ class Gear(object):
         var solid = session.GetModel("gear.prt",pfcCreate("pfcModelType").MDL_PART);
         var n,width,m,myf,myn,mym,i,j,volume,count,d1Value,d2Value,d3Value;
         // 將模型檔中的 length 變數設為 javascript 中的 length 變數
-        n = solid.GetParam("n");
+        npinion = solid.GetParam("n");
         // 將模型檔中的 width 變數設為 javascript 中的 width 變數
         width = solid.GetParam("face_width");
         m = solid.GetParam("module");
@@ -297,7 +298,7 @@ class Gear(object):
                 {
                     //for(j=0;j<=1;j++)
                     //{
-                        myf='''+str(n)+''';
+                        myf='''+str(npinion)+''';
                         myn='''+str(facewidth)+'''
                         mym='''+str(m)+'''
     // 設定變數值, 利用 ModelItem 中的 CreateDoubleParamValue 轉換成 Pro/Web.Link 所需要的浮點數值
@@ -336,7 +337,7 @@ class Gear(object):
     // ]]></script>
     '''
 
-            outstring += "進行"+str(counter)+"次重複運算後,得到合用的facewidth值為:"+str(facewidth)
+            outstring += "進行"+str(counter)+"次重複運算後,得到合用的facewidth值為:"+str(facewidth)+",小齒輪齒數:"+str(npinion)+",大齒輪齒數:"+str(npinion*2)+",模數:"+str(m)
         return outstring
     #@+node:office.20150407074720.9: *3* cube_weblink
     @cherrypy.expose
