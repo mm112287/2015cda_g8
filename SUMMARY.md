@@ -11,4 +11,5 @@
 * [Gitbook大綱](basic_strucure.md)
 * [目錄](content.md)
 * [前言─協同環境建立](foreword.md)
+   * WordPress網誌建立與設定
 
