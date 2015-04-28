@@ -15,7 +15,7 @@
    * [Github協同倉儲建立與設定](foreword_GitHub.md)
    * [Gitbook電子書建立與設定](foreword_Gitbook.md)
 * [專案一─2D&3D齒輪繪製](PJ1.md)
-   * 工作分配
+   * [工作分配](PJ1_coop.md)
    * 瀏覽器輸入表單
        * 2D輸入表單說明
    * 齒輪繪製
