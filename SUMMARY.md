@@ -1,7 +1,6 @@
 # Summary
 
 * [introduction](README.md)
-* [40223110](40223110.md)
 * [Gitbook大綱](basic_strucure.md)
 * [目錄](content.md)
 * [工作分配](PJ1_coop.md)
@@ -31,6 +30,7 @@
        * [第七齒輪](PJ2_work7.md)
    * 2D齒輪數據分析
 * [各組員「總」工作內容回報](Work_total.md)
+* [40223110](40223110.md)
 * [40223124的研發日誌](40223124.md)
 * [40223145](40223145.md)
 * [40223149](40223149.md)
