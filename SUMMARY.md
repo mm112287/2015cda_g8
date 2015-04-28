@@ -10,12 +10,12 @@
 * [40223110](40223110.md)
 * [Gitbook大綱](basic_strucure.md)
 * [目錄](content.md)
+* [工作分配](PJ1_coop.md)
 * [前言─協同環境建立](foreword.md)
    * [WordPress網誌建立與設定](foreword_WP.md)
    * [Github協同倉儲建立與設定](foreword_GitHub.md)
    * [Gitbook電子書建立與設定](foreword_Gitbook.md)
 * [專案一─2D&3D齒輪繪製](PJ1.md)
-   * [工作分配](PJ1_coop.md)
    * [瀏覽器輸入表單](PJ1_browser.md)
        * [2D輸入表單說明](PJ1_browser2D.md)
        * [3D輸入表單說明](PJ1_browser3D.md)
@@ -35,7 +35,6 @@
        * [第五齒輪](PJ2_work5.md)
        * [第六齒輪](PJ2_work6.md)
        * [第七齒輪](PJ2_work7.md)
-   * 2D齒輪數據分析
+   * [2D齒輪數據分析](2dchi_lun_shu_ju_fen_xi.md)
 * [各組員「總」工作內容回報](Work_total.md)
-   * [40223145](40223145.md)
 
