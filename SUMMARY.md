@@ -10,5 +10,5 @@
 * [40223110](40223110.md)
 * [Gitbook大綱](basic_strucure.md)
 * 目錄
-* 前言─協同環境建立
+* [前言─協同環境建立](foreword.md)
 
