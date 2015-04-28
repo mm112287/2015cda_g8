@@ -35,6 +35,6 @@
        * [第五齒輪](PJ2_work5.md)
        * [第六齒輪](PJ2_work6.md)
        * [第七齒輪](PJ2_work7.md)
-   * 2D齒輪數據分析
+   * [2D齒輪數據分析](2dchi_lun_shu_ju_fen_xi.md)
 * [各組員「總」工作內容回報](Work_total.md)
 
