@@ -25,7 +25,7 @@
        * [3D齒輪creo繪圖方法](PJ1_gear3D_creo.md)
    * [回報&統整](PJ1_reciprocation.md)
    * [操作畫面](PJ1_example.md)
-* [專案二─3D齒輪應用----七顆齒輪嚙合](PJ2.md)
+* [專案二─2D齒輪應用----七顆齒輪嚙合](PJ2.md)
    * [基礎網頁建立](PJ2_envir.md)
    * [各組員工作內容](PJ2_work.md)
        * [第一齒輪](PJ2_work1.md)
@@ -35,6 +35,6 @@
        * [第五齒輪](PJ2_work5.md)
        * [第六齒輪](PJ2_work6.md)
        * [第七齒輪](PJ2_work7.md)
-   * [3D齒輪數據分析](2dchi_lun_shu_ju_fen_xi.md)
+   * 2D齒輪數據分析
 * [各組員「總」工作內容回報](Work_total.md)
 
