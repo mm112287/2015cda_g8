@@ -15,5 +15,6 @@
    * [Github協同倉儲建立與設定](foreword_GitHub.md)
    * [Gitbook電子書建立與設定](foreword_Gitbook.md)
 * [專案一─2D&3D齒輪繪製](PJ1.md)
+   * 工作分配
 * [專案二─3D齒輪應用----七顆齒輪嚙合](PJ2.md)
 
