@@ -34,5 +34,5 @@
        * [第四齒輪](PJ2_work4.md)
        * [第五齒輪](PJ2_work5.md)
        * [第六齒輪](PJ2_work6.md)
-       * 第七齒輪
+       * [第七齒輪](PJ2_work7.md)
 
