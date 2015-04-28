@@ -1,4 +1,4 @@
-# 3D齒輪creo繪圖方法
+# 3D齒輪creo繪圖方法(負責人:40223110王常浩)
 
 說明 Brython 協同繪圖模式下, 與 JavaScript canvas 繪圖對應的相關概念與可用指令
 
