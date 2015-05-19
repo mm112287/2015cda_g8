@@ -671,6 +671,7 @@ gear(0,400,'''+str(K)+''','''+str(N)+'''-2,"read")
     <body onload="brython()">
         協同產品設計，第八組<br/>
         <a href="index2">40223124，袁丞宗的程式</a><br/>
+        <a href="http://cd0427-40223151.rhcloud.com/index">40223151，簡正斌的程式</a><br/>
         其他尚未建立
         
         '''
