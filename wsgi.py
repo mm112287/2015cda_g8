@@ -84,20 +84,17 @@ class Hello(object):
     <!-- 啟動 brython() -->
     <body onload="brython()">
         協同產品設計，第八組<br/>
-        <a href="index2">40223124，袁丞宗的程式</a><br/>
-        <a href="index3">40223151，簡正斌的程式</a><br/>
-        其他尚未建立
     <table border=3>
     <tr>
 　　 <th><font size="4">小組名單</font></th>
 　　 <th><font size="4"></font></th>
     </tr>
 　 <tr rowspan="2">
-　　 <th><font size='4' color='yellow' ><a href="http://cd0427-40223151.rhcloud.com/">40223151簡正斌</a> </font></th>
+　　 <th><font size='4' color='yellow' ><a href="index3">40223151簡正斌</a> </font></th>
 　　 <th><font size="4"><a href="http://cd0427-40223110.rhcloud.com/">40223110王常浩</a></font></th>
 　 </tr>
 　 <tr>
-　　 <th><font size="4"><a href="http://cd0427-40223124.rhcloud.com/">40223124袁丞宗 </a></font></th>
+　　 <th><font size="4"><a href="index2">40223124袁丞宗 </a></font></th>
 　　 <th><font size="4"><a href="http://cd0427-40223129.rhcloud.com/">40223129許家瑋 </a></font></th>
     </tr>
 　 <tr>
@@ -1112,7 +1109,7 @@ gear(0,400,'''+str(K)+''','''+str(N)+'''-2,"read")
     def menuLink(self):
         return '''
         <br />
-        <a href=\"index\">input</a>|
+        <a href=\"index\">首頁</a>|
         <br />
         '''
 ################# (4) 程式啟動區
