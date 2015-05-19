@@ -121,7 +121,13 @@ class Hello(object):
         cherrypy.session['answer'] = theanswer
         cherrypy.session['count'] = thecount
         # 印出讓使用者輸入的超文件表單
-        outstring = '''
+        outstring = "學號:40223151"
+        outstring += "<br />"
+        outstring += "姓名:簡正斌"
+        outstring += "<br />"
+        outstring += "班級:四設二甲"
+        outstring += "<br />"
+        outstring += '''
     <!DOCTYPE html> 
     <html>
     <head>
@@ -133,7 +139,7 @@ class Hello(object):
     </head>
     <!-- 啟動 brython() -->
     <body onload="brython()">        
-    <form method=\"post\" action=\"mygeartest2\">
+    <form method=\"post\" action=\"mygeartest3\">
         <fieldset>
         <legend>考試協同七個齒輪齒輪參數表單值:</legend>
         齒數1:<br />
@@ -226,13 +232,17 @@ class Hello(object):
     </body>
     </html>
     '''
+        outstring +="個人openshift網站"
+        outstring +="<font size='4' color='red' >(有影片教學)</font>"
+        outstring += "<br />"
+        outstring +='''<font size='4' color='yellow' ><a href="http://cd0427-40223151.rhcloud.com/">40223151簡正斌</a> </font>'''
         return outstring
     index3.exposed = True
 
     #@+node:2015.20150330144929.1713: *3* twoDgear
     @cherrypy.expose
     # N 為齒數, M 為模數, P 為壓力角
-    def mygeartest2(self, K=None, N=None,ng1=None, ng2=None, ng3=None, ng4=None, ng5=None, ng6=None, inp2=None):
+    def mygeartest3(self, K=None, N=None,ng1=None, ng2=None, ng3=None, ng4=None, ng5=None, ng6=None, inp2=None):
         outString = ""
         outString +="齒數1:"+N
         outString += "<br />"
@@ -415,7 +425,7 @@ class Hello(object):
     '''
 
         return outString
-    mygeartest2.exposed = True
+    mygeartest3.exposed = True
 
     #@-others
     def index2(self, K=None, N=None, inp2=None):
