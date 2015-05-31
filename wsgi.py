@@ -13,7 +13,7 @@ import os
 import random
 # 導入 gear 模組
 import gear
-
+import legoman
 ################# (2) 廣域變數設定區
 # 確定程式檔案所在目錄, 在 Windows 下有最後的反斜線
 _curdir = os.path.join(os.getcwd(), os.path.dirname(__file__))
@@ -84,30 +84,33 @@ class Hello(object):
     <!-- 啟動 brython() -->
     <body onload="brython()">
         協同產品設計，第八組<br/>
+    <a href="legoman">樂高機器人組立</a><br/> 
     <table border=3>
     <tr>
-　　 <th><font size="4">小組名單</font></th>
-　　 <th><font size="4"></font></th>
+    <th><font size="4">小組名單</font></th>
+    <th><font size="4"></font></th>
     </tr>
-　 <tr rowspan="2">
-　　 <th><font size='4' color='yellow' ><a href="index3">40223151簡正斌</a> </font></th>
-　　 <th><font size="4"><a href="http://cd0427-40223110.rhcloud.com/">40223110王常浩</a></font></th>
-　 </tr>
-　 <tr>
-　　 <th><font size="4"><a href="index2">40223124袁丞宗 </a></font></th>
-　　 <th><font size="4"><a href="s40223129">40223129許家瑋 </a></font></th>
+    <tr rowspan="2">
+    <th><font size='4' color='yellow' ><a href="index3">40223151簡正斌</a> </font></th>
+    <th><font size="4"><a href="http://cd0427-40223110.rhcloud.com/">40223110王常浩</a></font></th>
     </tr>
-　 <tr>
-　　 <th><font size='4' color='yellow' ><a href="http://2015springcda-40223149.rhcloud.com/">40223149賴涵餘</a></font></th>
-　　 <th><font size="4">40223150謝俊宇 </font></th>
+    <tr>
+    <th><font size="4"><a href="index2">40223124袁丞宗 </a></font></th>
+    <th><font size="4"><a href="s40223129">40223129許家瑋 </a></font></th>
     </tr>
-　 <tr>
-　　 <th><font size="4">40223145劉兆銓</font></th>
-　　 <th></th>
+    <tr>
+    <th><font size='4' color='yellow' ><a href="http://2015springcda-40223149.rhcloud.com/">40223149賴涵餘</a></font></th>
+    <th><font size="4">40223150謝俊宇 </font></th>
+    </tr><tr>
+    <th><font size="4">40223145劉兆銓</font></th>
+    <th></th>
     </tr>
-  
+
+
         '''
         return outstring
+
+
 
     @cherrypy.expose
     # N 為齒數, M 為模數, P 為壓力角
@@ -1409,8 +1412,6 @@ gear(0,400,'''+str(K)+''','''+str(N)+'''-2,"read")
     <input type=submit value=send>
     </form>'''
         return outstring0
-    @cherrypy.expose
-    
     def twoDgear(self, N=20, M=5, P=15):
         outstring = '''
     <!DOCTYPE html> 
@@ -1525,6 +1526,7 @@ application_conf = {'/static':{
     }
 root = Hello()
 root.gear = gear.Gear()
+root.legoman = legoman.MAN()
 cherrypy.server.socket_port = 8082
 cherrypy.server.socket_host = '127.0.0.1'
 if 'OPENSHIFT_REPO_DIR' in os.environ.keys():
