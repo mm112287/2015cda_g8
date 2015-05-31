@@ -249,21 +249,26 @@ var assembly = model;
 var featID = three_plane_assembly(session, assembly, transf, 0, 0, "LEGO_BODY.prt", "ASM_TOP", "ASM_FRONT", "ASM_RIGHT", "TOP", "FRONT", "RIGHT"); 
 // 利用函式呼叫組立右手 ARM, 組立增量次序為 1
 axis_plane_assembly(session, assembly, transf, featID, 0, 
-                              "LEGO_ARM_RT.prt", "A_13", "DTM1", "A_4", "DTM1");
+                              "LEGO_ARM_RT.prt", "A_13", "DTM1", "A_4", "DTM1"
+);
 // 利用函式呼叫組立左手 ARM, 組立增量次序為 2
 axis_plane_assembly(session, assembly, transf, featID, 0, 
                               "LEGO_ARM_LT.prt", "A_9", "DTM2", "A_4", "DTM1");
+
 // 利用函式呼叫組立右手 HAND, 組立增量次序為 3
 axis_plane_assembly(session, assembly, transf, featID, 1, 
                               "LEGO_HAND.prt", "A_2", "DTM2", "A_1", "DTM3");
+
 // 利用函式呼叫組立左手 HAND, 組立增量次序為 4
 axis_plane_assembly(session, assembly, transf, featID, 2, 
                               "LEGO_HAND.prt", "A_2", "DTM2", "A_1", "DTM3");
+
 // 利用函式呼叫組立人偶頭部 HEAD, 組立增量次序為 5
 // BODY id 為 featID+0, 以 A_2 及  DTM3 約束
 // HEAD 則直接呼叫檔案名稱, 以 A_2, DTM2 約束
 axis_plane_assembly(session, assembly, transf, featID, 0, 
                               "LEGO_HEAD.prt", "A_2", "DTM3", "A_2", "DTM2");
+
 // Body 與 WAIST 採三個平面約束組立
 // Body 組立面為 DTM4, DTM5, DTM6
 // WAIST 組立面為 DTM1, DTM2, DTM3, 組立增量次序為 6, 與 body 採三面 mate 組立
