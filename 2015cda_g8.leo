@@ -33,7 +33,11 @@
 </v>
 <v t="office.20150407074720.1"><vh>@file gear.py</vh></v>
 <v t="2014fall.20141212095015.1780"><vh>@edit setup.py</vh></v>
+<<<<<<< HEAD
 <v t="2015.20150531152010.1" a="E"><vh>@auto legoman.py</vh></v>
+=======
+<v t=".20150531152010.1" a="E"><vh>@auto legoman.py</vh></v>
+>>>>>>> ec753707236980ba4416ad17bbee72f9fe1c6950
 </v>
 <v t="2015.20150330144929.1715" a="E"><vh>以下為專案報告相關檔案</vh>
 <v t="2015.20150330144929.1716"><vh>@edit SUMMARY.md</vh></v>
@@ -699,6 +703,7 @@ def index3(self, K=None, N=None, inp2=None):
 &lt;script src="/static/gearUtils-04.js" type="text/javascript"&gt;&lt;/script&gt;
 &lt;/head&gt;
 &lt;!-- 啟動 brython() --&gt;
+<<<<<<< HEAD
 &lt;body onload="brython()"&gt;        
 &lt;form method=\"post\" action=\"mygeartest3\"&gt;
     &lt;fieldset&gt;
@@ -844,6 +849,19 @@ from browser import document
 from math import *
 # 請注意, 這裡導入位於 Lib/site-packages 目錄下的 spur.py 檔案
 import spur
+=======
+&lt;body onload="brython()"&gt;
+    協同產品設計，第八組&lt;br/&gt;
+    &lt;a href="index2"&gt;40223124，袁丞宗的程式&lt;/a&gt;&lt;br/&gt;
+    &lt;a href="http://cd0427-40223151.rhcloud.com/index"&gt;40223151，簡正斌的程式&lt;/a&gt;&lt;br/&gt;
+    其他尚未建立
+    
+    '''
+    return outstring</t>
+<t tx="2014fall.20141212095015.1774"></t>
+<t tx="2014fall.20141212095015.1775"># coding=utf-8
+# 上面的程式內容編碼必須在程式的第一或者第二行才會有作用
+>>>>>>> ec753707236980ba4416ad17bbee72f9fe1c6950
 
 # 準備在 id="plotarea" 的 canvas 中繪圖
 canvas = document["plotarea"]
