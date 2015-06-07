@@ -100,7 +100,7 @@ class Hello(object):
     </tr>
     <tr>
     <th><font size='4' color='yellow' ><a href="http://2015springcda-40223149.rhcloud.com/">40223149賴涵餘</a></font></th>
-    <th><font size="4">40223150謝俊宇 </font></th>
+    <th><font size="4"><a href="http://2015cd0505-40223150.rhcloud.com/">40223150謝俊宇 </font></th>
     </tr><tr>
     <th><font size="4">40223145劉兆銓</font></th>
     <th></th>
