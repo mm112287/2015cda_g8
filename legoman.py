@@ -1114,7 +1114,7 @@ var MpfcSelect = pfcCreate("MpfcSelect");
 for (var i = 0; i < 3; i++)
 {
     var asmItem = subassembly.GetItemByName(pfcCreate("pfcModelItemType").ITEM_SURFACE, asmDatums[i]);
-    
+
     if (asmItem == void null)
     {
         interactFlag = true;

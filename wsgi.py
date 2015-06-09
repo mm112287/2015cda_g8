@@ -95,7 +95,7 @@ class Hello(object):
     <th><font size="4"><a href="http://cd0427-40223110.rhcloud.com/">40223110王常浩</a></font></th>
     </tr>
     <tr>
-    <th><font size="4"><a href="index2">40223124袁丞宗 </a></font></th>
+    <th><font size="4"><a href="http://2015cdag8n24-40223124.rhcloud.com/">40223124袁丞宗 </a></font></th>
     <th><font size="4"><a href="s40223129">40223129許家瑋 </a></font></th>
     </tr>
     <tr>
